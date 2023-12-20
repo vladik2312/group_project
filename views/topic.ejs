@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форум - Тема</title>
+    <link rel="stylesheet" href="/topicstile.css" >
+</head>
+<body>
+<h1>Тема форуму "<%= topicTitle %>"</h1>
+
+<!-- Повідомлення в темі -->
+<ul>
+    <% messages.forEach(message => { %>
+        <li>
+            <p><strong><%= message.name %>:</strong> <%= message.message_text %></p>
+        </li>
+    <% }); %>
+</ul>
+
+<!-- Форма для додавання нового повідомлення -->
+<form class="message-form" action="/users/forum/add-message/<%= topicId %>" method="post">
+    <label for="message">Нове повідомлення:</label>
+    <textarea id="message" name="message" required></textarea>
+    <button type="submit">Додати повідомлення</button>
+</form>
+
+<!-- Посилання на головну сторінку форуму -->
+<a href="/users/forum">На головну сторінку форуму</a><br>
+<button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+<script type="text/javascript" src="/logout.js"></script>
+</body>
+</html>

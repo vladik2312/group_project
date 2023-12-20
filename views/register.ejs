@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" href="/styles.css" >
+
+</head>
+<body>
+<div class="window">
+    <h1 class="header">User Registration</h1>
+    <div class="form-container">
+        <form action="/users/register" method="post">
+            <label for="login">Login:</label>
+            <input type="text" id="login" name="login" class="input-field" required>
+            <br>
+            <label for="pass">Password:</label>
+            <input type="password" id="pass" name="pass" class="input-field" required>
+            <br>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="input-field">
+            <br>
+            <button type="submit" class="submit-button">Register</button>
+        </form>
+    </div>
+    <br>
+    <a href="/" class="link_back_to_home">Back to Home</a>
+</div>
+</body>
+</html>
