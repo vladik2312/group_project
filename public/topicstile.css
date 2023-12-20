@@ -1,0 +1,72 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #282c35; /* Темний фон */
+    color: #fff; /* Колір тексту */
+    margin: 20px; /* Відступи по краям */
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #444; /* Колір фону повідомлень */
+    padding: 10px;
+    margin-top: 10px; /* Відступи між повідомленнями */
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li strong {
+    flex-grow: 1; /* Займати доступний простір ліворуч */
+    margin-right: 15px; /* Додати відступ праворуч */
+}
+
+li p {
+    flex-grow: 10; /* Займати доступний простір ліворуч */
+    margin-left: 15px; /* Додати відступ праворуч */
+}
+
+form {
+    margin-top: 20px;
+}
+
+textarea {
+    width: 82%;
+    padding: 8px;
+    margin-right: 8px;
+}
+
+button {
+    padding: 8px;
+    background-color: #4caf50; /* Зелений колір */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Змінений колір при наведенні */
+}
+
+.logout-btn {
+    padding: 10px;
+    background-color: #f44336; /* Червоний колір для кнопки виходу */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f; /* Змінений колір при наведенні */
+}
