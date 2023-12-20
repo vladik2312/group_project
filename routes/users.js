@@ -116,20 +116,29 @@ router.get('/forum/topic/:topicId', (req, res) => {
     const topicId = req.params.topicId;
 
     // SQL-запит для отримання повідомлень в темі
-    const query = 'SELECT messages.message_text, account.name FROM messages JOIN account ON messages.user_id = account.id WHERE messages.topic_id = ?';
+    const queryMessages = 'SELECT messages.message_text, account.name FROM messages JOIN account ON messages.user_id = account.id WHERE messages.topic_id = ?';
 
-    // Виконання SQL-запиту до бази даних
-    pool.query(query, [topicId], (error, messages) => {
+    // Виконання SQL-запиту до бази даних для отримання повідомлень
+    pool.query(queryMessages, [topicId], (error, messages) => {
         if (error) throw error; // Обробка помилок
 
-        // Отримання списку тем для передачі у шаблон
-        const queryTopics = 'SELECT * FROM topics';
-        pool.query(query, [topicId], (error, messages) => {
+        // SQL-запит для отримання назви теми
+        const queryTopic = 'SELECT title FROM topics WHERE id = ?';
+
+        // Виконання SQL-запиту до бази даних для отримання назви теми
+        pool.query(queryTopic, [topicId], (error, topic) => {
             if (error) throw error; // Обробка помилок
-            res.render('topic', { messages, topicId });
+
+            // Отримання списку тем для передачі у шаблон
+            const queryTopics = 'SELECT * FROM topics';
+            pool.query(queryTopics, (error, topics) => {
+                if (error) throw error; // Обробка помилок
+                res.render('topic', { messages, topicId, topicTitle: topic[0].title, topics });
+            });
         });
     });
 });
+
 
 
 
@@ -177,17 +186,38 @@ router.post('/forum/create-topic', (req, res) => {
         return;
     }
 
-    // SQL-запит для створення нової теми
-    const query = 'INSERT INTO topics (user_id, title, created_at) VALUES (?, ?, NOW())';
+    // Перевірка, чи тема з такою назвою вже існує
+    const checkTopicQuery = 'SELECT COUNT(*) AS count FROM topics WHERE title = ?';
 
-    // Виконання SQL-запиту до бази даних
-    pool.query(query, [req.session.userId, title, req.session.username], (error, results) => {
+    pool.query(checkTopicQuery, [title], (error, result) => {
         if (error) {
-            console.error('Error creating topic:', error);
+            console.error('Error checking existing topic:', error);
             res.status(500).send('Internal Server Error');
             return;
         }
-        res.redirect('/users/forum'); // Перенаправлення на сторінку форуму
+
+        const topicExists = result[0].count > 0;
+
+        if (topicExists) {
+            // Тема з такою назвою вже існує, повертаємо помилку або виконуємо необхідні дії
+            res.redirect('/users/forum?error=Тема з такою назвою вже існує');
+            return;
+        }
+
+        // Якщо тема не існує, виконуємо SQL-запит для створення нової теми
+        const createTopicQuery = 'INSERT INTO topics (user_id, title, created_at) VALUES (?, ?, NOW())';
+        const values = [req.session.userId, title];
+
+        pool.query(createTopicQuery, values, (error, results) => {
+            if (error) {
+                console.error('Error creating topic:', error);
+                res.status(500).send('Internal Server Error');
+                return;
+            }
+
+            // Тема успішно створена
+            res.redirect('/users/forum');
+        });
     });
 });
 
