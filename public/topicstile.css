@@ -1,13 +1,26 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #282c35; /* Темний фон */
-    color: #fff; /* Колір тексту */
-    margin: 20px; /* Відступи по краям */
+    font-family: 'Times New Roman', serif;
+    background-color: #282c35;
+    color: #ceced5;
+    margin: 0;
     padding: 0;
+    text-align: center;
+}
+
+.window {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 h1 {
-    text-align: center;
+    border-radius: 10px;
+    font-size: 40px;
+    color: #1eb1de;
+    margin: 5px;
 }
 
 ul {
@@ -16,57 +29,102 @@ ul {
 }
 
 li {
-    background-color: #444; /* Колір фону повідомлень */
+    background-color: #444;
     padding: 10px;
-    margin-top: 10px; /* Відступи між повідомленнями */
+    margin-top: 5px;
     border-radius: 5px;
-    font-size: 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 12px;
 }
 
 li strong {
-    flex-grow: 1; /* Займати доступний простір ліворуч */
-    margin-right: 15px; /* Додати відступ праворуч */
+    flex-grow: 1;
+    margin-right: 15px;
 }
 
-li p {
-    flex-grow: 10; /* Займати доступний простір ліворуч */
-    margin-left: 15px; /* Додати відступ праворуч */
-}
-
-form {
-    margin-top: 20px;
-}
-
-textarea {
-    width: 82%;
-    padding: 8px;
-    margin-right: 8px;
-}
-
-button {
-    padding: 8px;
-    background-color: #4caf50; /* Зелений колір */
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049; /* Змінений колір при наведенні */
+p {
+    margin-left: 15px;
+    font-size: 15px;
+    flex-grow: 2;
+    margin-right: 10px;
+    text-align: left;
 }
 
 .logout-btn {
-    padding: 10px;
-    background-color: #f44336; /* Червоний колір для кнопки виходу */
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
+    font-family: 'Times New Roman', serif;
+    font-size: 18px;
+    margin-top: 15px;
+    font-weight: bold ;
+    text-decoration: none;
+    color: #181818;
+    padding: 5px 10px;
+    border: 1px solid #181818;
+    border-radius: 8px;
+    background-color: #ea3636;
+    transition: background-color 0.3s;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 
 .logout-btn:hover {
-    background-color: #d32f2f; /* Змінений колір при наведенні */
+    background-color: #ceced5;
+}
+
+label {
+    font-size: 20px;
+    font-family: 'Times New Roman', serif;
+    padding: 5px;
+}
+
+textarea {
+    resize: none;
+    width: 50%;
+    height: 40px;
+    font-size: 17px;
+    margin-right: 8px;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: black;
+
+}
+
+button {
+    font-family: 'Times New Roman', serif;
+    font-size: 18px;
+    font-weight: bold ;
+    text-decoration: none;
+    color: #181818;
+    padding: 5px 12px;
+    border: 1px solid #181818;
+    border-radius: 8px;
+    background-color: #1eb1de;
+    transition: background-color 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+a {
+    font-family: 'Times New Roman', serif;
+    font-size: 15px;
+    color: #ceced5;
+    text-decoration: none;
+
+}
+
+a:hover {
+    color: #1eb1de;
 }
