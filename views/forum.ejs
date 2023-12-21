@@ -7,13 +7,13 @@
 </head>
 <body>
 <div id="forum-container">
-    <h1>Форуми</h1>
+    <h1>Форум</h1>
 
 <!--     Перелік тем -->
     <ul>
         <% topics.forEach(topic => { %>
             <li>
-                <p><strong><%= topic.author %>:</strong> <%= topic.title %></p>
+                <p><strong></strong> <%= topic.title %></p>
                 <!-- Додайте інші відомості про тему, наприклад, дату створення і т. д. -->
                 <a href="/users/forum/topic/<%= topic.id %>">Переглянути тему</a>
             </li>
@@ -24,7 +24,7 @@
     <form class="topic-form" action="/users/forum/create-topic" method="post">
         <label for="title">Назва теми:</label>
         <input type="text" id="title" name="title" required>
-        <button type="submit">Створити тему</button>
+        <button type="submit" class="submit-button">Створити тему</button>
     </form>
 
 
